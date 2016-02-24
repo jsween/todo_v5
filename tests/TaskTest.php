@@ -140,5 +140,47 @@
             //Assert
             $this->assertEquals($test_task, $result);
         }
+        function testUpdate()
+        {
+            //Arrange
+            $name = "Work on car";
+            $id = null;
+            $category_id = 1;
+            $due = 2016-02-24;
+            $test_task = new Task($name, $id, $category_id, $due);
+            $test_task->save();
+
+            $new_name = "Work on car";
+
+            //Act
+            $test_task->update($new_name);
+
+            //Assert
+            $this->assertEquals("Work on car", $test_task->getDescription());
+        }
+        function testDelete()
+        {
+            //Arrange
+            $name = "Work on car";
+            $id = null;
+            $category_id = 1;
+            $due = 2016-02-24;
+            $test_task = new Task($name, $id, $category_id, $due);
+            $test_task->save();
+
+            $name2 = "Throw rocks at blind";
+            $id = null;
+            $category_id2 = 2;
+            $due2 = 2016-02-25;
+            $test_task2 = new Task($name2, $id, $category_id2, $due2);
+            $test_task2->save();
+
+
+            //Act
+            $test_task->delete();
+
+            //Assert
+            $this->assertEquals([$test_task2], Task::getAll());
+        }
     }
  ?>

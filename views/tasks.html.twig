@@ -16,13 +16,13 @@
             <p>Here are all your tasks:</p>
             <ul>
                 {% for task in tasks %}
-                    <li>{{ task.getDescription }} --
+                    <li><a href="/tasks/{{ task.getId }}/edit">{{ task.getDescription }} --
                     {% for category in categories %}
-                        {% if category.getId == task.getCategoryId %}
+                        <!-- {% if category.getId == task.getCategoryId %}
                         <em>{{ category.getName}}</em>
-                        {% endif %}
+                        {% endif %} -->
                     {% endfor %}
-                    </li>
+                    </a></li>
                 {% endfor %}
             </ul>
         {% endif %}
@@ -36,7 +36,7 @@
         <form action='/delete_tasks' method='post'>
             <button type='submit'>Clear</button>
         </form>
-
+        <p><a href='/tasks/{{ task.getId }}'>Edit Tasks</a></p>
         <p><a href='/'>Home</a></p>
     </body>
 </html>
